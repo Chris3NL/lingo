@@ -4,4 +4,5 @@
 FILE *pFile;
 
 int OpenFile(char *strFilename);
+void CloseFile();
 int GetFilelines(FILE pFilePointer);
