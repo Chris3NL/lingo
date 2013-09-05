@@ -1,5 +1,12 @@
 # depslib dependency file v1.0
-1189868556 source:c:\users\christian\git\lingo\main.c
+1378329095 source:c:\users\christian\git\lingo\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1378408513 source:c:\users\christian\git\lingo\filehandler.c
+	"filehandler.h"
+
+1378408519 c:\users\christian\git\lingo\filehandler.h
 	<stdio.h>
 	<stdlib.h>
 

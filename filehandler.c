@@ -1,3 +1,7 @@
+#include "filehandler.h"
 
-FILE OpenFile($file);
-int GetFilelines($file);
+int OpenFile(char *strFilename)
+{
+    pFile = fopen(strFilename,"r");
+    return 0;
+}
