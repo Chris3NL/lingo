@@ -1,13 +1,14 @@
 #include "filehandler.h"
 
+
 int OpenFile(char *strFilename)
 {
     pFile = fopen(strFilename,"r");
-    if(pFile!=NULL)
+    if(pFile != NULL)
     {
-        return -1;
+        return 0;
     }
-    return 0;
+    return -1;
 }
 
 void CloseFile()
@@ -15,12 +16,28 @@ void CloseFile()
     fclose(pFile);
 }
 
-int GetFilelines()
+
+void GetFileData(char *strFilename)
 {
-    if(pFile == NULL)
+    char strTemp[16];
+    int i=0;
+
+    if(OpenFile(strFilename) != 0)
     {
-        return -1;
+        printf("Kan %s niet openen!\n", strFilename);
+        return;
     }
-    
-    return 0;
+    printf("%s geopend\n", strFilename);
+
+    while((fgets (strTemp , 16 , pFile) != NULL) && (i < (MAX_LINES)))
+    {
+//        printf("Line: %i=> %s",i,strTemp);
+//        printf("regel: %i\n",i);
+        strcpy(strFileData[i],strTemp);
+        i++;
+    }
+
+    iFileLines = i;
+    CloseFile();
 }
+//*/
