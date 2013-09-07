@@ -10,4 +10,4 @@ char strFileData[MAX_LINES][16];
 
 int OpenFile(char *strFilename);
 void CloseFile();
-void GetFileData(char *strFilename);
+int GetFileData(char *strFilename);

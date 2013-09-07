@@ -1,5 +1,7 @@
 #include "lingo.h"
 
+int iWoordLengte;
+
 void initGame()
 {
     int i;
@@ -22,6 +24,7 @@ void geefNieuw()
     int igeweest = 1;
     int i;
     int itemp;
+//    char strTemp[16];
 
     while(igeweest == 1)
     {
@@ -37,15 +40,26 @@ void geefNieuw()
     //We hebben hem nu gehad
     iUsedLines[iHuidigGame] = irand;
 
+//    strcpy(strTemp, strBordWoord[i])
+
+    itemp = strlen( strFileData[irand] );
+    printf("i1: %i\n",itemp);
     //Zet hem in het huidige woord
-    strcpy(strHuidigWoord,strFileData[irand]);
+    strncpy(strHuidigWoord,strFileData[irand], itemp-1);
     printf("HUIDIG: %s\n",strHuidigWoord);
 
     //Maak een woord met de eerste letter en puntjes
+    strcpy(strBordWoord,"");
     strncpy(strBordWoord,strHuidigWoord,1);
-    itemp = strlen(strHuidigWoord);
-    for(i=0; i<itemp; i++)
+    iWoordLengte = strlen(strHuidigWoord);
+    printf("i2: %i\n",iWoordLengte);
+
+    for(i=1; i<iWoordLengte; i++)
     {
-        strcat(strHuidigWoord,".");
+        printf("i: %i\n",i);
+        strcat(strBordWoord,".");
     }
+    printf("SCHERM: %s\n",strBordWoord);
+    iHuidigePoging = 0;
+    iHuidigGame++;
 }

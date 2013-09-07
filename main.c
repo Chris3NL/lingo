@@ -9,9 +9,29 @@ int main()
 
     srand(time(NULL));
 
-    GetFileData("woorden.txt");
+    if(GetFileData("woorden.txt") != 1)
+    {
+        return 0;
+    }
     initGame();
 
+    geefNieuw();
+    geefNieuw();
+    geefNieuw();
+/*
+    while(iHuidigGame < AANTAL_GAMES)
+    {
+        //heeft nog spellen
+        geefNieuw();
+        printf("SPEL: %i\n", iHuidigGame);
+
+        while(iHuidigePoging < POGINGEN)
+        {
+            //heeft nog pogingen
+            printf("Poging: %i\n", iHuidigePoging+1);
+            iHuidigePoging++;
+        }
+    }//*/
 
 
 

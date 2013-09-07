@@ -6,9 +6,9 @@ int OpenFile(char *strFilename)
     pFile = fopen(strFilename,"r");
     if(pFile != NULL)
     {
-        return 0;
+        return 1;
     }
-    return -1;
+    return 0;
 }
 
 void CloseFile()
@@ -17,15 +17,15 @@ void CloseFile()
 }
 
 
-void GetFileData(char *strFilename)
+int GetFileData(char *strFilename)
 {
     char strTemp[16];
     int i=0;
 
-    if(OpenFile(strFilename) != 0)
+    if(OpenFile(strFilename) != 1)
     {
         printf("Kan %s niet openen!\n", strFilename);
-        return;
+        return 0;
     }
     printf("%s geopend\n", strFilename);
 
@@ -39,5 +39,13 @@ void GetFileData(char *strFilename)
 
     iFileLines = i;
     CloseFile();
+
+    if(iFileLines < 10)
+    {
+        printf("Minder dan 10 woorden in de lijst!\n");
+        return 0;
+    }
+
+    return 1;
 }
 //*/
