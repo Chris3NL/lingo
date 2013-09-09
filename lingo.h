@@ -4,6 +4,7 @@
 
 #define AANTAL_GAMES 5
 #define POGINGEN 3
+#define MAX_WOORD 16
 
 int iUsedLines[AANTAL_GAMES];
 int iHuidigGame;
@@ -11,11 +12,9 @@ int iGameStarted;
 int iHuidigWoord;
 int iHuidigePoging;
 int iFail;
-char strHuidigWoord[16];
-char strBordWoord[16];
+char strHuidigWoord[MAX_WOORD];
+char strBordWoord[MAX_WOORD];
 
 void initGame();
-int checkWoord(char *input); //Controleer de input van de user met het woord
-int heeftPoging();
-void geefWoord(); //Geef het volledige woord
 void geefNieuw(); //Geef een nieuw woord
+void checkWoord(char *input, char *output); //Controleer de input van de user met het woord

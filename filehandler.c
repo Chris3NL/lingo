@@ -1,5 +1,5 @@
 #include "filehandler.h"
-
+#include "lingo.h"
 
 int OpenFile(char *strFilename)
 {
@@ -29,7 +29,7 @@ int GetFileData(char *strFilename)
     }
     printf("%s geopend\n", strFilename);
 
-    while((fgets (strTemp , 16 , pFile) != NULL) && (i < (MAX_LINES)))
+    while((fgets (strTemp , MAX_WOORD , pFile) != NULL) && (i < (MAX_LINES)))
     {
 //        printf("Line: %i=> %s",i,strTemp);
 //        printf("regel: %i\n",i);
