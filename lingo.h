@@ -10,6 +10,7 @@ int iHuidigGame;
 int iGameStarted;
 int iHuidigWoord;
 int iHuidigePoging;
+int iFail;
 char strHuidigWoord[16];
 char strBordWoord[16];
 

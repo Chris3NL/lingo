@@ -6,7 +6,7 @@
 
 int main()
 {
-
+    char input[16];
     srand(time(NULL));
 
     if(GetFileData("woorden.txt") != 1)
@@ -15,21 +15,38 @@ int main()
     }
     initGame();
 
-    geefNieuw();
-    geefNieuw();
-    geefNieuw();
-/*
+//    geefNieuw();
+//    geefNieuw();
+//    geefNieuw();
+
     while(iHuidigGame < AANTAL_GAMES)
     {
         //heeft nog spellen
         geefNieuw();
         printf("SPEL: %i\n", iHuidigGame);
+        printf("---------------------------------------\n");
 
         while(iHuidigePoging < POGINGEN)
         {
             //heeft nog pogingen
             printf("Poging: %i\n", iHuidigePoging+1);
             iHuidigePoging++;
+            printf("%s\n", strBordWoord);
+            printf("---------------------------------------\n");
+            scanf("%s", &input);
+
+//            printf("in:%i: %s\n", strlen(input), input);
+        }
+        if(iHuidigePoging == POGINGEN)
+        {
+            printf("Het woord was: %s\n");
+        }
+        printf("---------------------------------------\n");
+        printf("Nog een spel spelen? [j/n]: ");
+        scanf("%s" &input);
+        if(input[0] == 'y' || input[0] == 'j' || input[0] == 'J' || input[0] == 'Y')
+        {
+            break;
         }
     }//*/
 
