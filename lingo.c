@@ -18,9 +18,7 @@ void initGame()
 
     printf("WELKOM BIJ LINGO\n");
     printf("---------------------------------------\n");
-    printf("Juiste letter juiste plek: #\n");
-    printf("Juiste letter verkeerde plek: ^\n");
-    printf("---------------------------------------\n");
+
 
 }
 
@@ -52,7 +50,7 @@ void geefNieuw()
 //    printf("i1: %i\n",itemp);
     //Zet hem in het huidige woord
     strncpy(strHuidigWoord,strFileData[irand], itemp-1);
-    printf("HUIDIG: %s\n",strHuidigWoord);
+//    printf("HUIDIG: %s\n",strHuidigWoord);
 
     //Maak een woord met de eerste letter en puntjes
     memset(strBordWoord,0,MAX_WOORD);
@@ -72,38 +70,48 @@ void geefNieuw()
     iFail = 0;
 }
 
-void checkWoord(char *input, char *output)
+int checkWoord(char *input, char *output, char *output2)
 {
 
     char strRestLTRS[MAX_WOORD];
-    char output2[MAX_WOORD];
-
-    int i, j;
+//    char output2[MAX_WOORD];
+    int iFail = 0;
+    int i, j, k;
 
     strcpy(strRestLTRS, strHuidigWoord);
 
     //Kijken voor goede plek goede letter
     for(i=0; i<iWoordLengte; i++)
     {
-        printf("%i: %c::%i\n",i, input[i], input[i]);
+ //       printf("%i: %c::%i\n",i, input[i], input[i]);
         if(input[i] == strHuidigWoord[i])
         {
             //goed/goed
             output[i] = strHuidigWoord[i];
+            output2[i] = '#';
             strRestLTRS[i] = '.';
             input[i] = '.';
         }
         else
         {
-            output[i] = '.';
+            if(output[i] == 0)
+            {
+                output[i] = '.';
+            }
+            iFail = 1;
         }
     }
 
-    printf("REST: %s\n", strRestLTRS);
-    printf("OUT: %s\n", output);
+    if(iFail == 0)
+    {
+        return 33;
+    }
+
+//    printf("REST: %s\n", strRestLTRS);
+//    printf("OUT: %s\n", output);
 
     //kijken voor goede letter verkeerde plek
-    for(i=0; i<iWoordLengte; i++)
+    for(i=0, k=0; i<iWoordLengte; i++)
     {
         //for voor input
         for(j=0; j<iWoordLengte; j++)
@@ -111,18 +119,21 @@ void checkWoord(char *input, char *output)
             //for voor controle
             if(input[i] == strRestLTRS[j] && strRestLTRS[j] != '.')
             {
-                output2[i] = input[i];
+                output2[i] = '^';//input[i];
                 strRestLTRS[j] = '.';
-                printf("%c\n", input[i]);
+                k++;
                 break;
             }
             else
             {
-                output2[i] = '.';
-//                printf("NOI\n");
+                if(output2[i] != '#')
+                {
+                    output2[i] = '.';
+                }
             }
  //           printf("%c",output2[i]);
         }
     }
-    printf("\n");
+//    printf("\n");
+    return 0;
 }

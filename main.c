@@ -26,6 +26,9 @@ int main()
         geefNieuw();
         printf("SPEL: %i\n", iHuidigGame);
         printf("---------------------------------------\n");
+        printf("Juiste letter juiste plek: #\n");
+        printf("Juiste letter verkeerde plek: ^\n");
+        printf("---------------------------------------\n");
 
         while(iHuidigePoging < POGINGEN)
         {
@@ -39,7 +42,12 @@ int main()
             printf("---------------------------------------\n");
             scanf("%s", &input);
 
-            checkWoord(input, &strReturn);
+            if(checkWoord(input, &strBordWoord, &strReturn) == 33)
+            {
+                printf("GEWONNEN\n");
+                iHuidigePoging = 33;
+                break;
+            }
 
             printf("%s\n", strReturn);
 
@@ -59,8 +67,6 @@ int main()
         }
     }//*/
 
-
-
-    printf("Hello world!\n");
+    printf("Bedankt voor het spelen van LINGO\n");
     return 0;
 }
