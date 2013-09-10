@@ -76,10 +76,11 @@ void checkWoord(char *input, char *output)
 {
 
     char strRestLTRS[MAX_WOORD];
+    char output2[MAX_WOORD];
 
     int i, j;
 
-    strcpy(strRestLTRS, strBordWoord);
+    strcpy(strRestLTRS, strHuidigWoord);
 
     //Kijken voor goede plek goede letter
     for(i=0; i<iWoordLengte; i++)
@@ -88,22 +89,40 @@ void checkWoord(char *input, char *output)
         if(input[i] == strHuidigWoord[i])
         {
             //goed/goed
-            output[i] = '#';
+            output[i] = strHuidigWoord[i];
             strRestLTRS[i] = '.';
+            input[i] = '.';
+        }
+        else
+        {
+            output[i] = '.';
         }
     }
+
+    printf("REST: %s\n", strRestLTRS);
+    printf("OUT: %s\n", output);
 
     //kijken voor goede letter verkeerde plek
-    for(i=0; i<WoordLengte; i++)
+    for(i=0; i<iWoordLengte; i++)
     {
         //for voor input
-        for(j=0; j<WoordLengte; j++)
+        for(j=0; j<iWoordLengte; j++)
         {
             //for voor controle
-            if(intput[i] == strRestLTRS[j] && strRestLTRS[j] != '.')
+            if(input[i] == strRestLTRS[j] && strRestLTRS[j] != '.')
             {
-
+                output2[i] = input[i];
+                strRestLTRS[j] = '.';
+                printf("%c\n", input[i]);
+                break;
             }
+            else
+            {
+                output2[i] = '.';
+//                printf("NOI\n");
+            }
+ //           printf("%c",output2[i]);
         }
     }
+    printf("\n");
 }

@@ -41,7 +41,7 @@ int main()
 
             checkWoord(input, &strReturn);
 
-            printf("out: %s\n", strReturn);
+            printf("%s\n", strReturn);
 
 
 //            printf("in:%i: %s\n", strlen(input), input);

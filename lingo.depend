@@ -19,7 +19,7 @@
 	<stdlib.h>
 	<string.h>
 
-1378742962 source:/Users/christian/git/lingo/main.c
+1378804100 source:/Users/christian/git/lingo/main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -34,6 +34,6 @@
 	<stdlib.h>
 	"filehandler.h"
 
-1378752497 source:/Users/christian/git/lingo/lingo.c
+1378805741 source:/Users/christian/git/lingo/lingo.c
 	"lingo.h"
 
