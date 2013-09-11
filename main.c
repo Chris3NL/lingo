@@ -58,13 +58,17 @@ int main()
         {
             printf("Het woord was: %s\n", strHuidigWoord);
         }
-        printf("---------------------------------------\n");
-        printf("Nog een spel spelen? [j/n]: ");
-        scanf("%s", &input);
-        if(input[0] != 'y' && input[0] != 'j' && input[0] != 'J' && input[0] != 'Y')
+        if(iHuidigGame != AANTAL_GAMES)
         {
-            break;
+            printf("---------------------------------------\n");
+            printf("Nog een spel spelen? [j/n]: ");
+            scanf("%s", &input);
+            if(input[0] != 'y' && input[0] != 'j' && input[0] != 'J' && input[0] != 'Y')
+            {
+                break;
+            }
         }
+
     }//*/
 
     printf("Bedankt voor het spelen van LINGO\n");

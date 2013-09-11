@@ -33,7 +33,7 @@ void geefNieuw()
     while(igeweest == 1)
     {
         irand = rand()%(iFileLines+1);
-        for(i=0; i<=AANTAL_GAMES; i++)
+        for(i=0; i<AANTAL_GAMES; i++)
         {
             if(irand != iUsedLines[i])
             {
