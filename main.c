@@ -4,21 +4,26 @@
 #include "filehandler.h"
 #include "lingo.h"
 
-int main()
+/** \brief Main function
+ *
+ * \param int argc arguments counter (notused)
+ * \param char *argv[] arguments array (notused)
+ * \return int systeem return (always 0)
+ *
+ */
+int main(int argc, char *argv[])
 {
-    char input[MAX_LINES];
-    char strReturn[MAX_LINES];
-    srand(time(NULL));
+    char input[MAX_LINES]; /**< variable for user input*/
+    char strReturn[MAX_LINES]; /**< variable for symbolic return */
 
+    srand(time(NULL)); // seed the rand function
+
+    // Open te file and read it into memory
     if(GetFileData("woorden.txt") != 1)
     {
         return 0;
     }
     initGame();
-
-//    geefNieuw();
-//    geefNieuw();
-//    geefNieuw();
 
     while(iHuidigGame < AANTAL_GAMES)
     {
