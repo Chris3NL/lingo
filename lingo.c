@@ -1,16 +1,22 @@
 #include "lingo.h"
 
-int iWoordLengte;
+int iWoordLengte; /**< Current word length */
 
+/** \brief reset global variables
+ *
+ * \param void
+ * \return void
+ *
+ */
 void initGame()
 {
     int i;
+    //reset all games
     for(i=0; i<=AANTAL_GAMES; i++)
     {
         iUsedLines[i] = -1;
     }
     iHuidigGame = 0;
-    iGameStarted = 0;
     iHuidigWoord = -1;
     iHuidigePoging = 0;
     strcpy(strHuidigWoord, "");
@@ -22,6 +28,12 @@ void initGame()
 
 }
 
+/** \brief Give a new word
+ *
+ * \param void
+ * \return void
+ *
+ */
 void geefNieuw()
 {
     int irand;
@@ -32,27 +44,30 @@ void geefNieuw()
 
     while(igeweest == 1)
     {
+        //while the word is already been or hasn't run once the give new word
         irand = rand()%(iFileLines+1);
         for(i=0; i<AANTAL_GAMES; i++)
         {
             if(irand != iUsedLines[i])
             {
+                //it hasn't already been on the screen
                 igeweest = 0;
             }
         }
     }
-    //We hebben hem nu gehad
+
+    //We have had him now
     iUsedLines[iHuidigGame] = irand;
 
 //    strcpy(strTemp, strBordWoord[i])
 
     itemp = strlen( strFileData[irand] );
 //    printf("i1: %i\n",itemp);
-    //Zet hem in het huidige woord
+    //Put it in current word
     strncpy(strHuidigWoord,strFileData[irand], itemp-1);
 //    printf("HUIDIG: %s\n",strHuidigWoord);
 
-    //Maak een woord met de eerste letter en puntjes
+    //Make a word with only the first character and dots
     memset(strBordWoord,0,MAX_WOORD);
  //   printf("BW: %s:%c\n", strBordWoord, strBordWoord[4]);
     strncpy(strBordWoord,strHuidigWoord,1);
@@ -67,9 +82,17 @@ void geefNieuw()
 //    printf("SCHERM: %s\n",strBordWoord);
     iHuidigePoging = 0;
     iHuidigGame++;
-    iFail = 0;
 }
 
+/** \brief checking the input to the current word
+ *
+ * \param char *input user input from the screen
+ * \param char *output output to the screen (also know as strBordWoord)
+ * \param char *output2 a symbolic respentation of the avaiable letters
+ * \return char *output and *output2
+ * \return int errorcode (33=GOOD/GOOD, 1=NOFAIL, 0=FAIL)
+ *
+ */
 int checkWoord(char *input, char *output, char *output2)
 {
 
@@ -78,15 +101,16 @@ int checkWoord(char *input, char *output, char *output2)
     int iFail = 0;
     int i, j, k;
 
+    //Put current word in temp string
     strcpy(strRestLTRS, strHuidigWoord);
 
-    //Kijken voor goede plek goede letter
+    //Look for good place and good character
     for(i=0; i<iWoordLengte; i++)
     {
  //       printf("%i: %c::%i\n",i, input[i], input[i]);
         if(input[i] == strHuidigWoord[i])
         {
-            //goed/goed
+            //good/good
             output[i] = strHuidigWoord[i];
             output2[i] = '#';
             strRestLTRS[i] = '.';
@@ -104,22 +128,24 @@ int checkWoord(char *input, char *output, char *output2)
 
     if(iFail == 0)
     {
+        //we have all the character good/good
         return 33;
     }
 
 //    printf("REST: %s\n", strRestLTRS);
 //    printf("OUT: %s\n", output);
 
-    //kijken voor goede letter verkeerde plek
+    //Look for good character wrong spot
     for(i=0, k=0; i<iWoordLengte; i++)
     {
-        //for voor input
+        //for for input
         for(j=0; j<iWoordLengte; j++)
         {
-            //for voor controle
+            //for for check
             if(input[i] == strRestLTRS[j] && strRestLTRS[j] != '.')
             {
-                output2[i] = '^';//input[i];
+                //good but wrong spot
+                output2[i] = '^';
                 strRestLTRS[j] = '.';
                 k++;
                 break;
@@ -135,5 +161,5 @@ int checkWoord(char *input, char *output, char *output2)
         }
     }
 //    printf("\n");
-    return 0;
+    return 1;
 }
