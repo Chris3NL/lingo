@@ -1,5 +1,0 @@
-C:/Users/Christian/git/lingo/main.c:7: warning: argument 'int' of command @param is not found in the argument list of main(int argc, char *argv[])
-C:/Users/Christian/git/lingo/main.c:7: warning: argument 'char' of command @param is not found in the argument list of main(int argc, char *argv[])
-C:/Users/Christian/git/lingo/main.c:7: warning: The following parameters of main(int argc, char *argv[]) are not documented:
-  parameter 'argc'
-  parameter 'argv'
