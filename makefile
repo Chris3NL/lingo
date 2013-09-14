@@ -1,4 +1,12 @@
-all: filehandler.o lingo.o main.o
+all:
+	echo "use win or unix"
+
+files: filehandler.o lingo.o main.o
+
+win: files
+	gcc filehandler.o lingo.o main.o -o lingo.exe
+
+unix: files
 	gcc filehandler.o lingo.o main.o -o lingo
 
 filehandler.o:
