@@ -19,4 +19,10 @@ main.o:
 	gcc -c main.c
 
 clean:
-	rm *.o
+	echo "use winclean or unixclean"
+
+winclean:
+	del *.o lingo.exe
+
+unix:
+	rm *.o lingo
