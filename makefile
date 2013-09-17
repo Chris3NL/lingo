@@ -24,5 +24,5 @@ clean:
 winclean:
 	del *.o lingo.exe
 
-unix:
+unixclean:
 	rm *.o lingo
