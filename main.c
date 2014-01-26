@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     // Open te file and read it into memory
     if(GetFileData("woorden.txt") != 1)
     {
-        return 0; //FAIL
+        return 1; //FAIL
     }
 
     initGame(); //Init game
